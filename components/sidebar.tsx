@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import {
   Code,
+  FileText,
   ImageIcon,
   LayoutDashboard,
   MessageSquare,
@@ -28,9 +29,15 @@ const routes = [
     href: "/conversation",
   },
   {
+    label: "Talk with PDF",
+    icon: FileText,
+    color: "text-red-500",
+    href: "/pdf",
+  },
+  {
     label: "Image Generation",
     icon: ImageIcon,
-    color: "text-pink-700",
+    color: "text-pink-400",
     href: "/image",
   },
   {

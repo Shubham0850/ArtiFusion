@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import {
   ArrowRight,
   Code,
+  FileText,
   ImageIcon,
   MessageSquare,
   MusicIcon,
@@ -21,10 +22,17 @@ const tools = [
     href: "/conversation",
   },
   {
+    label: "Talk with PDF",
+    icon: FileText,
+    color: "text-red-500",
+    bgColor: "bg-red-500/10",
+    href: "/pdf",
+  },
+  {
     label: "Image Generation",
     icon: ImageIcon,
-    color: "text-pink-700",
-    bgColor: "bg-pink-700/10",
+    color: "text-pink-400",
+    bgColor: "bg-pink-400/10",
     href: "/image",
   },
   {
