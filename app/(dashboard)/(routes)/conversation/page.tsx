@@ -1,7 +1,7 @@
 "use client";
 
 import * as z from "zod";
-import { MessageSquare } from "lucide-react";
+import { MailSearch, MessageSquare, SendHorizonal } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -32,7 +32,7 @@ function Conversation() {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log("values:", values)
     try {
-     
+
       const userMessage: ChatCompletionRequestMessage = {
         role: "user",
         content: values.prompt
@@ -58,48 +58,16 @@ function Conversation() {
   };
 
   return (
-    <div>
-      <Heading
-        title="Conversation"
-        description="Our most advanced conversation model."
-        icon={MessageSquare}
-        iconColor="text-violet-500"
-        bgColor="bg-violet-500/10"
-      />
-
-      <div className="px-4 lg:px-8">
-        <div>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="grid w-full grid-cols-12 gap-2 p-4 px-3 border rounded-lg md:px-6 focus-within:shadow-sm"
-            >
-              <FormField
-                name="prompt"
-                render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-10">
-                    <FormControl className="p-0 m-0">
-                      <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
-                        disabled={isLoading}
-                        placeholder="How do i calculate the radius of a circle?"
-                        {...field}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-
-              <Button className="w-full col-span-12 lg:col-span-2" disabled={isLoading}>
-                Generate
-              </Button>
-            </form>
-          </Form>
-        </div>
-        <div className="mt-4 space-y-4">
+    <div className="max-w-[1000px] h-[100vh] -mt-4 mx-auto relative">
+      <div className="">
+        {/* Messages box */}
+        <div className="mt-4 space-y-4 pb-[100px] h-full overflow-y-scroll">
           {messages.length === 0 && !isLoading && (
-            <div>
-              No messages
+            <div className="flex items-center justify-center w-full text-gray-500">
+              <div className="text-center">
+                <MailSearch className="w-[50px] h-[50px] mx-auto" /> {/* Adjust the font size as needed */}
+                <p>No messages</p>
+              </div>
             </div>
           )}
           <div className="flex flex-col-reverse gap-y-4">
@@ -110,6 +78,36 @@ function Conversation() {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Input box */}
+      <div className="absolute bottom-0 left-0 w-full p-3 pb-5">
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex w-full p-3 bg-[#29292B] rounded-full focus-within:shadow-sm"
+          >
+            <FormField
+              name="prompt"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormControl className="px-2 m-0">
+                    <Input
+                      className="text-white bg-transparent border-0 border-none outline-none text-md focus-visible:ring-0 focus-visible:ring-transparent focus:outline-none"
+                      disabled={isLoading}
+                      placeholder="How do i calculate the radius of a circle?"
+                      {...field}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <Button className="text-white bg-transparent lg:col-span-2 hover:bg-transparent hover:text-gray-300" disabled={isLoading}>
+              <SendHorizonal className="" />
+            </Button>
+          </form>
+        </Form>
       </div>
     </div>
   );

@@ -3,22 +3,22 @@ import { cn } from "@/lib/utils";
 import {
   Code,
   FileText,
+  Home,
   ImageIcon,
-  LayoutDashboard,
   MessageSquare,
   MusicIcon,
-  Settings,
+  Sun,
   VideoIcon,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
+import { UserButton } from "@clerk/nextjs";
 
 const routes = [
   {
-    label: "Dashboard",
-    icon: LayoutDashboard,
+    label: "Home",
+    icon: Home,
     color: "text-sky-500",
     href: "/dashboard",
   },
@@ -29,39 +29,34 @@ const routes = [
     href: "/conversation",
   },
   {
-    label: "Talk with PDF",
+    label: "Talk to PDF",
     icon: FileText,
     color: "text-red-500",
     href: "/pdf",
   },
   {
-    label: "Image Generation",
+    label: "Image Gen",
     icon: ImageIcon,
     color: "text-pink-400",
     href: "/image",
   },
   {
-    label: "Video Generation",
+    label: "Video Gen",
     icon: VideoIcon,
     color: "text-orange-700",
     href: "/video",
   },
   {
-    label: "Music Generation",
+    label: "Music Gen",
     icon: MusicIcon,
     color: "text-emerald-500",
     href: "/music",
   },
   {
-    label: "Code Generation",
+    label: "Code Gen",
     icon: Code,
     color: "text-green-500",
     href: "/code",
-  },
-  {
-    label: "Setting",
-    icon: Settings,
-    href: "/setting",
   },
 ];
 
@@ -69,29 +64,35 @@ function SideBar() {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col h-full p-2 space-y-4 bg-[#202123] text-white">
-      <div className="mb-5">
-        <Image alt="logo" src="/logo.png" width={180} height={20} />
-      </div>
+    <div className="flex flex-col h-full p-3 space-y-4 bg-[#2D2F30] text-white">
+      <div className="flex flex-col justify-between h-full">
+        <div>
+          {routes.map((route, index) => (
+            <Link
+              href={route.href}
+              key={index}
+              className={"my-5 cursor-pointer"}
+            >
+              <div className="mb-5 text-center">
+                <div className={cn("rounded-[50px] p-3 flex items-center justify-center hover:text-white hover:bg-white/10", pathname === route.href
+                  ? " bg-white/10"
+                  : "text-zinc-400")}>
+                  <route.icon className={"h-5 w-5"} />
+                </div>
+                <p className={cn("text-xs", pathname === route.href
+                  ? "text-white"
+                  : "text-zinc-400")}>{route.label}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
 
-      <div>
-        {routes.map((route, index) => (
-          <Link
-            href={route.href}
-            key={index}
-            className={cn(
-              "flex justify-start w-full p-3 my-2 text-sm font-medium transition rounded-lg cursor-pointer group hover:text-white hover:bg-white/10",
-              pathname === route.href
-                ? "text-white bg-white/10"
-                : "text-zinc-400"
-            )}
-          >
-            <div className="flex items-center flex-1">
-              <route.icon className={cn("h-5 w-5 mr-3", route.color)} />
-              {route.label}
-            </div>
-          </Link>
-        ))}
+        <div className="flex flex-col items-center p-2 space-y-3">
+          <div className="rounded-[50px] p-3 flex items-center justify-center hover:text-white hover:bg-white/10 cursor-pointer">
+            <Sun className="w-5 h-5" />
+          </div>
+          <UserButton afterSignOutUrl="/" />
+        </div>
       </div>
     </div>
   );

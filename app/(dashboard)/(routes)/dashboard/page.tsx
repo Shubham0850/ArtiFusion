@@ -62,34 +62,40 @@ function Dashboard() {
   const router = useRouter();
 
   return (
-    <div>
-      <div className="mb-8 space-y-4">
-        <h2 className="text-2xl font-bold text-center md:text-4xl">
-          Explore the power of AI
-        </h2>
-        <p className="text-sm font-light text-center text-muted-foreground md:text-lg">
-          Chat with the smartest AI - Experience the power of AI
-        </p>
+    <div className="w-full">
+      <div className="text-white dashboard-banner">
+        <div>
+          <div className="mb-[100px]">
+            <h2 className="text-[70px] font-bold text-center ">
+              Explore the power of AI
+            </h2>
+            <p className="text-xl font-light text-center">
+              Chat with the smartest AI - Experience the power of AI
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-between">
+            {tools.map((tool, index) => (
+              <Card
+                onClick={() => {
+                  router.push(tool.href);
+                }}
+                key={index}
+                className="flex items-center justify-between p-4 cursor-pointer bg-[#29292B] border-none w-[49%] rounded-3xl mt-5"
+              >
+                <div className="flex items-center gap-x-4">
+                  <div className={cn("p-2 w-fit rounded-2xl")}>
+                    <tool.icon className={cn("w-8 h-8 text-white opacity-20")} />
+                  </div>
+                  <div className="font-semibold text-gray-200">{tool.label}</div>
+                </div>
+                <ArrowRight className="w-5 h-5 text-gray-200" />
+              </Card>
+            ))}
+          </div>
+        </div>
       </div>
-      <div className="px-4 space-y-4 md:px-20 lg:px-32">
-        {tools.map((tool, index) => (
-          <Card
-            onClick={() => {
-              router.push(tool.href);
-            }}
-            key={index}
-            className="flex items-center justify-between p-4 transition cursor-pointer border-black/5 hover:shadow-md bg-white/10"
-          >
-            <div className="flex items-center gap-x-4">
-              <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>
-                <tool.icon className={cn("w-8 h-8", tool.color)} />
-              </div>
-              <div className="font-semibold">{tool.label}</div>
-            </div>
-            <ArrowRight className="w-5 h-5" />
-          </Card>
-        ))}
-      </div>
+
     </div>
   );
 }
