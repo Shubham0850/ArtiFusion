@@ -1,20 +1,16 @@
 "use client";
 
 import * as z from "zod";
-import { MailSearch, MessageSquare, SendHorizonal } from "lucide-react";
+import { MailSearch } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import axios from "axios"
 
-import Heading from "@/components/heading";
-
-import { formSchema } from "./constants";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { ChatCompletionRequestMessage } from "openai";
+import SearchBar from "@/components/search-bar";
+import { formSchema } from "@/lib/constants";
 
 function Conversation() {
   const router = useRouter();
@@ -82,32 +78,7 @@ function Conversation() {
 
       {/* Input box */}
       <div className="absolute bottom-0 left-0 w-full p-3 pb-5">
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="flex w-full p-3 bg-[#29292B] rounded-full focus-within:shadow-sm"
-          >
-            <FormField
-              name="prompt"
-              render={({ field }) => (
-                <FormItem className="w-full">
-                  <FormControl className="px-2 m-0">
-                    <Input
-                      className="text-white bg-transparent border-0 border-none outline-none text-md focus-visible:ring-0 focus-visible:ring-transparent focus:outline-none"
-                      disabled={isLoading}
-                      placeholder="How do i calculate the radius of a circle?"
-                      {...field}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <Button className="text-white bg-transparent lg:col-span-2 hover:bg-transparent hover:text-gray-300" disabled={isLoading}>
-              <SendHorizonal className="" />
-            </Button>
-          </form>
-        </Form>
+        <SearchBar placeholder="Distance of moon from earth ?" form={form} onSubmit={onSubmit} isLoading={isLoading} />
       </div>
     </div>
   );

@@ -1,19 +1,16 @@
 "use client";
 
 import * as z from "zod";
-import { BoxSelect, FileText, FileUp, SendHorizonal, X } from "lucide-react";
+import { BoxSelect, FileText, FileUp, X } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import { Box, IconButton } from '@radix-ui/themes';
 
-import { formSchema } from "./constants";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { ChatCompletionRequestMessage } from "openai";
 import { Card } from "@/components/ui/card";
+import SearchBar from "@/components/search-bar";
+import { formSchema } from "@/lib/constants";
 
 function PdfBadge({ name, resetFile }: any) {
 	return (
@@ -37,7 +34,6 @@ function PdfBadge({ name, resetFile }: any) {
 }
 
 function Conversation() {
-	const router = useRouter();
 	const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([])
 	const [selectedFileName, setSelectedFileName] = useState(null);
 
@@ -63,7 +59,6 @@ function Conversation() {
 
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
 		console.log("values:", values)
-
 	};
 
 	return (
@@ -85,13 +80,13 @@ function Conversation() {
 									id="fileInput"
 									accept=".pdf"
 									className="hidden"
+									// @ts-ignore
 									onChange={(e) => handleFileUpload(e.target.files[0])}
 								/>
 							</div>
 						</label>
 					) : (<PdfBadge name={selectedFileName} resetFile={resetFile} />)
 				}
-
 
 				{/* ---------- */}
 
@@ -116,32 +111,7 @@ function Conversation() {
 
 			{/* Input box */}
 			<div className="absolute bottom-0 left-0 w-full pb-5">
-				<Form {...form}>
-					<form
-						onSubmit={form.handleSubmit(onSubmit)}
-						className="flex w-full p-3 bg-[#29292B] rounded-full focus-within:shadow-sm"
-					>
-						<FormField
-							name="prompt"
-							render={({ field }) => (
-								<FormItem className="w-full">
-									<FormControl className="px-2 m-0">
-										<Input
-											className="text-white bg-transparent border-0 border-none outline-none text-md focus-visible:ring-0 focus-visible:ring-transparent focus:outline-none"
-											disabled={isLoading}
-											placeholder="Ask question to the pdf file you've uploaded.."
-											{...field}
-										/>
-									</FormControl>
-								</FormItem>
-							)}
-						/>
-
-						<Button className="text-white bg-transparent lg:col-span-2 hover:bg-transparent hover:text-gray-300" disabled={isLoading}>
-							<SendHorizonal className="" />
-						</Button>
-					</form>
-				</Form>
+				<SearchBar placeholder="Ask question to the files you've uploaded.." form={form} onSubmit={onSubmit} isLoading={isLoading} />
 			</div>
 		</div>
 	);
