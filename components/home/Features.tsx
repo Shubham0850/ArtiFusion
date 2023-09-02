@@ -14,7 +14,7 @@ function Features() {
             pb={12}
           >
             <Box p={{ base: 4, md: 12 }}>
-              <Text textColor={"yellow"}>Feature1</Text>
+              <Text textColor={"#07F9AC"}>Feature1</Text>
               <Text
                 fontWeight={"bold"}
                 py={4}
@@ -43,11 +43,11 @@ function Features() {
                 pt={6}
                 _hover={{ textDecoration: "underline", fontWeight: "bold" }}
               >
-                <Text textColor={"yellow"}>Get Started Free</Text>{" "}
+                <Text textColor={"#07F9AC"}>Get Started Free</Text>{" "}
                 <HiOutlineArrowUpRight
                   style={{
                     fontSize: 16,
-                    color: "yellow",
+                    color: "#07F9AC",
                     marginLeft: 5,
                     marginTop: 4,
                   }}
@@ -68,7 +68,7 @@ function Features() {
               <Image width={1000} height={1000} src="/fea2.svg" alt="" />
             </Box>
             <Box p={{ base: 4, md: 12 }}>
-              <Text textColor={"yellow"}>Feature2</Text>
+              <Text textColor={"#07F9AC"}>Feature2</Text>
               <Text
                 fontWeight={"bold"}
                 py={4}
@@ -88,11 +88,11 @@ function Features() {
                 pt={4}
                 _hover={{ textDecoration: "underline", fontWeight: "bold" }}
               >
-                <Text textColor={"yellow"}>Request A Demo</Text>{" "}
+                <Text textColor={"#07F9AC"}>Request A Demo</Text>{" "}
                 <HiOutlineArrowUpRight
                   style={{
                     fontSize: 16,
-                    color: "yellow",
+                    color: "#07F9AC",
                     marginLeft: 5,
                     marginTop: 4,
                   }}
@@ -110,7 +110,7 @@ function Features() {
             pb={12}
           >
             <Box p={{ base: 4, md: 12 }}>
-              <Text textColor={"yellow"}>Feature3</Text>
+              <Text textColor={"#07F9AC"}>Feature3</Text>
               <Text
                 fontWeight={"bold"}
                 py={4}
@@ -139,11 +139,11 @@ function Features() {
                 pt={6}
                 _hover={{ textDecoration: "underline", fontWeight: "bold" }}
               >
-                <Text textColor={"yellow"}>Try Product Description</Text>{" "}
+                <Text textColor={"#07F9AC"}>Try Product Description</Text>{" "}
                 <HiOutlineArrowUpRight
                   style={{
                     fontSize: 16,
-                    color: "yellow",
+                    color: "#07F9AC",
                     marginLeft: 5,
                     marginTop: 4,
                   }}

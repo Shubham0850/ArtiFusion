@@ -19,8 +19,7 @@ const Review = () => {
                 fontSize={{ base: "36px", md: "48px" }}
                 p={4}
               >
-                <Text as={"span"} textColor={"yellow"}>
-                  {" "}
+                <Text as={"span"} textColor={"#07F9AC"}>
                   GenAI.
                 </Text>{" "}
                 Received 4.8/5 Stars in Over 10,000+ Reviews.

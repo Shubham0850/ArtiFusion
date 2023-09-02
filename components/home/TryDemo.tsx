@@ -12,8 +12,7 @@ function TryDemo() {
               fontWeight={"bold"}
               p={4}
             >
-              {" "}
-              Generate Creative AI Copy On-The-Spot, Across Your Favorite Tools
+              Generate Creative AI Copy On-The-Spot, <br/>Across Your Favorite Tools
             </Text>
           </Box>
 
@@ -27,7 +26,6 @@ function TryDemo() {
               <Text
                 fontSize={{ base: "20px", md: "24px" }}
                 fontWeight={"bold"}
-                px={{ base: 0, md: 4 }}
               >
                 Generates quality contents
               </Text>
@@ -41,7 +39,6 @@ function TryDemo() {
               <Text
                 fontSize={{ base: "20px", md: "24px" }}
                 fontWeight={"bold"}
-                px={{ base: 0, md: 4 }}
               >
                 Provides Useful Suggestions
               </Text>
@@ -55,7 +52,6 @@ function TryDemo() {
               <Text
                 fontSize={{ base: "20px", md: "24px" }}
                 fontWeight={"bold"}
-                px={{ base: 0, md: 4 }}
               >
                 Improves Products Productivity
               </Text>
@@ -68,7 +64,7 @@ function TryDemo() {
           </Flex>
 
           <Box textAlign={"center"} py={8}>
-            <Button textColor={"black"} bg={"yellow"}>
+            <Button textColor={"black"} bg={"#07F9AC"}>
               Try a Demo
             </Button>
           </Box>

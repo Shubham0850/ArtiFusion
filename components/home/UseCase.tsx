@@ -13,7 +13,7 @@ const UseCase = () => {
               p={{ base: 2, md: 4 }}
               maxWidth={{ base: "100%", md: "900px" }}
             >
-              <Text p={{ base: 2, md: 4 }} textColor={"yellow"}>
+              <Text p={{ base: 2, md: 4 }} textColor={"#07F9AC"}>
                 GenAI Use Cases
               </Text>
               <Text

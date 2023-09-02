@@ -26,8 +26,8 @@ function Started() {
                 fontWeight={"bold"}
                 textColor={"white"}
               >
-                Using{" "}
-                <Text as={"span"} textColor={"yellow"}>
+                Using
+                <Text as={"span"} textColor={"#07F9AC"}>
                   {" "}
                   GenAI
                 </Text>{" "}
@@ -43,7 +43,7 @@ function Started() {
               fontSize={{ base: "14px", md: "18px" }}
               size="lg"
               textColor={"black"}
-              bg={"yellow"}
+              bg={"#07F9AC"}
             >
               Get Started Free
             </Button>
@@ -55,19 +55,13 @@ function Started() {
             alignItems="center"
             py={8}
           >
-            <Box
-              border="1px solid  yellow"
-              borderRadius={30}
-              overflow={"hidden"}
-            >
-              <Image
-                width={1000}
-                height={1000}
-                src="/screen-1.jpg"
-                alt=""
-                objectFit="cover"
-              />
-            </Box>
+            <Image
+              width={1000}
+              height={1000}
+              src="/screen.png"
+              alt="banner"
+              objectFit="cover"
+            />
           </Box>
         </Box>
       </Container>

@@ -17,7 +17,7 @@ import {
             <Container maxW={1300}>
               <Box textColor={"white"}>
                 <Box textAlign={"center"} p={4}>
-                  <Text textColor={"yellow"} p={2}>
+                  <Text textColor={"#07F9AC"} p={2}>
                     Pricing Plan
                   </Text>
                   <Text
@@ -30,7 +30,6 @@ import {
                     fontSize={{ base: "36px", md: "48px" }}
                     p={{ base: 0, md: 2 }}
                   >
-                    {" "}
                     Don&apos;t Worry, We&apos;ll Keep You Under Budget
                   </Text>
                   <Text p={2}>Get started with a 5-day trial, Cancel anytime.</Text>
@@ -45,11 +44,11 @@ import {
                   <Box
                     p={10}
                     border="2px solid #1b7c40"
-                    _hover={{ border: "2px solid yellow" }}
+                    _hover={{ border: "2px solid #07F9AC" }}
                     borderRadius="2xl"
                   >
                     <Text
-                      textColor={"yellow"}
+                      textColor={"#07F9AC"}
                       fontSize={{ base: "28px", md: "32px" }}
                     >
                       Free
@@ -65,7 +64,7 @@ import {
                       borderRadius={12}
                       fontSize={{ base: "24px", md: "20px" }}
                       width={"100%"}
-                      _hover={{ bg: "yellow", color: "black" }}
+                      _hover={{ bg: "#07F9AC", color: "black" }}
                     >
                       Start for Free
                     </Button>
@@ -81,11 +80,11 @@ import {
                   <Box
                     p={10}
                     border="2px solid #1b7c40"
-                    _hover={{ border: "2px solid yellow" }}
+                    _hover={{ border: "2px solid #07F9AC" }}
                     borderRadius="2xl"
                   >
                     <Text
-                      textColor={"yellow"}
+                      textColor={"#07F9AC"}
                       fontSize={{ base: "28px", md: "32px" }}
                     >
                       Starter
@@ -101,7 +100,7 @@ import {
                       bg={"#1b7c40"}
                       fontSize={{ base: "24px", md: "20px" }}
                       width={"100%"}
-                      _hover={{ bg: "yellow", color: "black" }}
+                      _hover={{ bg: "#07F9AC", color: "black" }}
                     >
                       Start for Free
                     </Button>
@@ -117,11 +116,11 @@ import {
                   <Box
                     p={10}
                     border="2px solid #1b7c40"
-                    _hover={{ border: "2px solid yellow" }}
+                    _hover={{ border: "2px solid #07F9AC" }}
                     borderRadius="2xl"
                   >
                     <Text
-                      textColor={"yellow"}
+                      textColor={"#07F9AC"}
                       fontSize={{ base: "28px", md: "32px" }}
                     >
                       Enterprise
@@ -137,7 +136,7 @@ import {
                       bg={"#1b7c40"}
                       fontSize={{ base: "24px", md: "20px" }}
                       width={"100%"}
-                      _hover={{ bg: "yellow", color: "black" }}
+                      _hover={{ bg: "#07F9AC", color: "black" }}
                     >
                       Start for Free
                     </Button>
