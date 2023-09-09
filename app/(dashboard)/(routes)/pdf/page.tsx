@@ -1,16 +1,11 @@
 "use client";
 
-import * as z from "zod";
 import { BoxSelect, FileText, FileUp, X } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, IconButton } from '@radix-ui/themes';
 
 import { useState } from "react";
-import { ChatCompletionRequestMessage } from "openai";
 import { Card } from "@/components/ui/card";
 import SearchBar from "@/components/search-bar";
-import { formSchema } from "@/lib/constants";
 
 function PdfBadge({ name, resetFile }: any) {
 	return (
@@ -34,7 +29,7 @@ function PdfBadge({ name, resetFile }: any) {
 }
 
 function Conversation() {
-	const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([])
+	const [messages, setMessages] = useState([])
 	const [selectedFileName, setSelectedFileName] = useState(null);
 
 	const handleFileUpload = (file: any) => {
@@ -47,19 +42,6 @@ function Conversation() {
 	const resetFile = () => {
 		setSelectedFileName(null)
 	}
-
-	const form = useForm<z.infer<typeof formSchema>>({
-		resolver: zodResolver(formSchema),
-		defaultValues: {
-			prompt: "",
-		},
-	});
-
-	const isLoading = form.formState.isSubmitting;
-
-	const onSubmit = async (values: z.infer<typeof formSchema>) => {
-		console.log("values:", values)
-	};
 
 	return (
 		<div className="max-w-[1000px] relative h-[100vh] mx-auto -mt-4">
@@ -91,7 +73,7 @@ function Conversation() {
 				{/* ---------- */}
 
 				{/* Message box */}
-				{messages.length === 0 && !isLoading && (
+				{messages.length === 0 && (
 					<div className="flex items-center justify-center w-full p-10 text-gray-500">
 						<div className="text-center">
 							<BoxSelect className="w-[50px] h-[50px] mx-auto" /> {/* Adjust the font size as needed */}
@@ -100,18 +82,14 @@ function Conversation() {
 					</div>
 				)}
 				<div className="flex flex-col-reverse gap-y-4">
-					{messages.map((message) => (
-						<div key={message.content}>
-							{message.content}
-						</div>
-					))}
+					messages
 				</div>
 				{/* ---------- */}
 			</div>
 
 			{/* Input box */}
 			<div className="absolute bottom-0 left-0 w-full pb-5">
-				<SearchBar placeholder="Ask question to the files you've uploaded.." form={form} onSubmit={onSubmit} isLoading={isLoading} />
+				<SearchBar placeholder="Ask question to the files you've uploaded.." />
 			</div>
 		</div>
 	);

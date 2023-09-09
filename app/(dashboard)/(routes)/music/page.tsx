@@ -1,24 +1,8 @@
 "use client";
 
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import SearchBar from "@/components/search-bar";
-import { formSchema } from "@/lib/constants";
 
 function Music() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      prompt: "",
-    },
-  });
-
-  const isLoading = form.formState.isSubmitting;
-
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log("values:", values)
-  };
 
   return (
     <div className="max-w-[1000px] relative h-[100vh] mx-auto -mt-4">
@@ -30,7 +14,7 @@ function Music() {
 
       {/* Input box */}
       <div className="absolute bottom-0 left-0 w-full pb-5">
-        <SearchBar placeholder="Drum sound on a lofi beat..." form={form} onSubmit={onSubmit} isLoading={isLoading} />
+        <SearchBar placeholder="Drum sound on a lofi beat..." />
       </div>
     </div>
   );

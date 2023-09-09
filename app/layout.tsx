@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider appearance={dark}>
+    <ClerkProvider>
       <Head>
         <link rel="icon/ico" href="/favicon.ico" />
       </Head>
