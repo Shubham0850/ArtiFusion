@@ -1,39 +1,36 @@
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
-import { Configuration, OpenAIApi } from "openai";
+import { OpenAI } from "langchain/llms/openai";
+import { BufferMemory } from "langchain/memory";
+import { ConversationChain } from "langchain/chains";
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+let model;
+let memory;
+let chain: any;
 
-const openai = new OpenAIApi(configuration);
-
-export async function POST(req: Request) {
+export async function POST(req: Request): Promise<NextResponse> {
   try {
     const { userId } = auth();
     const body = await req.json();
-    const { messages } = body;
+    const { input, firstMsg } = body;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    if (!configuration.apiKey) {
-      return new NextResponse("OpenAI API Key not configured", { status: 500 });
+    if (!input) {
+      return new NextResponse("Input are required", { status: 400 });
     }
 
-    if (!messages) {
-      return new NextResponse("Messages are required", { status: 400 });
+    if (firstMsg) {
+      model = new OpenAI({ modelName: "gpt-3.5-turbo" });
+      memory = new BufferMemory();
+      chain = new ConversationChain({ llm: model, memory });
     }
 
-    const response = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages,
-    });
+    const response = await chain.call({ input });
 
-    console.log("responses: 🚀", response);
-
-    return NextResponse.json(response.data.choices[0].message);
+    return new NextResponse(JSON.stringify({ output: response }), { status: 200, headers: { "Content-Type": "application/json" } });
   } catch (error) {
     console.log("[CONVERSATION_ERROR]", error);
     return new NextResponse("Internal error", { status: 500 });

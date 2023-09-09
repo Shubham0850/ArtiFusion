@@ -22,7 +22,6 @@ function SearchBar({ form, onSubmit, isLoading, placeholder }: any) {
 										placeholder={placeholder}
 										{...field}
 									/>
-									{/* <textarea className="w-full p-2 bg-transparent border-none resize-none text-whit" rows={1} wrap="soft" placeholder="Type your message..."/> */}
 								</FormControl>
 							</FormItem>
 						)}

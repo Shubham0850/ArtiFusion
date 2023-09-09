@@ -22,7 +22,9 @@ export async function POST(request: NextRequest) {
 
   // Use the PDFLoader to load the PDF and split it into smaller documents
   const pdfLoader = new PDFLoader(file);
-  const splitDocuments = await pdfLoader.loadAndSplit();
+  const splitDocuments = await pdfLoader.loadAndSplit(); 
+  // TODO: what loadAndSplit is doing here ? 
+  // TODO: what are chunks ?
 
   // Initialize the Pinecone client
   const pineconeClient = new PineconeClient();

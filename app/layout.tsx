@@ -1,7 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 import Head from "next/head";
+
 
 export const metadata: Metadata = {
   title: "ArtiFusion | Revolutionary SaaS AI platform",
@@ -15,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={dark}>
       <Head>
         <link rel="icon/ico" href="/favicon.ico" />
       </Head>
